@@ -47,18 +47,12 @@ func main() {
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("pong"))
 	})
-	if err := http.ListenAndServe(":8080", router); err != nil {
-		panic(err)
-	}
 	//Get that shows all products
 	router.Get("/products", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(Products)
 	})
-	if err := http.ListenAndServe(":8080", router); err != nil {
-		panic(err)
-	}
 	//Get that shows a product by ID
 	router.Get("/products/{id}", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
@@ -79,9 +73,6 @@ func main() {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("404 - Product not found"))
 	})
-	if err := http.ListenAndServe(":8080", router); err != nil {
-		panic(err)
-	}
 	//Get that seach products that their price is higher than a given price
 	router.Get("/products/search/{priceGt}", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
@@ -104,5 +95,4 @@ func main() {
 	if err := http.ListenAndServe(":8080", router); err != nil {
 		panic(err)
 	}
-
 }
