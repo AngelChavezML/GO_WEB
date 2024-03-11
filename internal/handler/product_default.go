@@ -5,11 +5,9 @@ import (
 	"io"
 	"net/http"
 	"proyect/go-web/internal"
-	"proyect/go-web/platform/web"
+	web "proyect/go-web/platform/web/response"
 	"time"
 )
-
-// Add the missing import for the internal package
 
 func NewDeafultProduct(task map[int]internal.Product_Struct, lastID int) *DeafultProduct {
 	//Default Values
@@ -21,9 +19,9 @@ func NewDeafultProduct(task map[int]internal.Product_Struct, lastID int) *Deaful
 	if lastID != 0 {
 		defaultLastID = lastID
 	}
-	return &NewDeafultProduct{
-		products: defaultProducts,
-		lastID:   defaultLastID,
+	return &DeafultProduct{
+		product: defaultProducts,
+		lastID:  defaultLastID,
 	}
 }
 func Pong(w http.ResponseWriter, r *http.Request) {

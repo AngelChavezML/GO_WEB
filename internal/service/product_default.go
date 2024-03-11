@@ -1,4 +1,4 @@
-package product_default
+package service
 
 import (
 	"proyect/go-web/internal"
@@ -6,7 +6,7 @@ import (
 
 func NewDeafultProduct(rp internal.Product_Repository) *DeafultProduct {
 	return &DeafultProduct{
-		repository: rp,
+		rp: rp,
 	}
 }
 
